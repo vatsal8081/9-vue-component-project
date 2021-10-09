@@ -1,0 +1,17 @@
+1) as you can see haar we have simple array in DemoMain file which we are showing by v-for in 3 ways 1. in main component it self by just v-for 2. by providing it as prop in DemoProp file 3. by providing it as Provide in DemoProvide file
+
+2) in all 3 places we are just showing elements by looping from it and by a thumb rool of vue reactivaty props and provide are also reactctve that mins if the data which we use as prop or provide if it change in parent all childs will also get taht change
+
+3) and we are changing that data after 5 sec in main component which is provideing it there we use 2 cases 1. we filter elements where there is name not equal to vatsal so filter will give us new array where there is no name vatsal and we are assigning it to friends array in data property which we provide and inject 2. we just find index of element where name is vatsal and slicing it so hear we are manupulating actual array
+
+4) but in both ways actual friends array will change and by rule that change will be affect to childs also
+
+5) however both cases will work for main and prop way but case 1 will not work in provide way why?
+
+6) the reasion is in the way provide and inject work. in main and prop way we are giving referencde of actual data property we have to child but in provide vue will provide new reference copy as key to childs so when we change friends by case 1 we are creating new array with filter and assinging it to friends so in a way we are assigning referencnce of new array to friends. that also mins we change friends and main and prop will detact it but pecause provide has other reference of friends it won't get chnage because we never change any thing in reference of initial friends array
+
+7) in slice way we are actuly chnaging frineds array so all ways including provide will also detact it.
+
+8) so keep in mind when you use provide and inject don't use any thing which will return new array and then we have to assign it to data property which we provide it to childs just use methods which actully chnage array.
+
+9) and also you should alwase use less and less of provide and inject because of there strange and unreadable charactoricts because it will incress chances of bugs in app.
